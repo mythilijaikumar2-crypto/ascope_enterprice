@@ -12,19 +12,31 @@ import {
 import { mockSuccessStories } from '@/mocks/success-stories';
 import { cn } from '@/lib/utils';
 
+// Import SVG partner logos from assets/partners
+import tcsLogo from '@/assets/partners/tcs.svg';
+import infosysLogo from '@/assets/partners/infosys.svg';
+import wiproLogo from '@/assets/partners/wipro.svg';
+import hclLogo from '@/assets/partners/hcl.svg';
+import cognizantLogo from '@/assets/partners/cognizant.svg';
+import zohoLogo from '@/assets/partners/zoho.svg';
+import hexawareLogo from '@/assets/partners/hexaware.svg';
+import capgeminiLogo from '@/assets/partners/capgemini.svg';
+import accentureLogo from '@/assets/partners/accenture.svg';
+import ltimindtreeLogo from '@/assets/partners/ltimindtree.svg';
+
 export const PlacementPage: React.FC = () => {
-  // 10 Global Hiring Partners
+  // 10 Global Hiring Partners mapping to imported SVGs
   const partners = [
-    { name: "TCS", style: "from-blue-600 to-sky-400 text-white font-extrabold uppercase px-3 py-1 bg-gradient-to-r rounded-lg shadow-sm" },
-    { name: "Infosys", style: "text-sky-600 font-extrabold tracking-wider" },
-    { name: "Wipro", style: "text-purple-600 font-bold border-2 border-purple-500 rounded-full px-4 py-0.5" },
-    { name: "HCLTech", style: "text-blue-800 font-black italic skew-x-12" },
-    { name: "Cognizant", style: "bg-gradient-to-tr from-cyan-600 to-blue-500 bg-clip-text text-transparent font-bold tracking-tight" },
-    { name: "Zoho", style: "text-red-500 font-extrabold tracking-wide" },
-    { name: "Hexaware", style: "text-neutral-800 font-extrabold tracking-widest uppercase" },
-    { name: "Capgemini", style: "text-blue-600 font-bold italic" },
-    { name: "Accenture", style: "text-violet-600 font-bold" },
-    { name: "LTI Mindtree", style: "text-orange-500 font-black tracking-tight" }
+    { name: "TCS", logo: tcsLogo, className: "h-7 w-auto" },
+    { name: "Infosys", logo: infosysLogo, className: "h-6 w-auto" },
+    { name: "Wipro", logo: wiproLogo, className: "h-8 w-auto" },
+    { name: "HCLTech", logo: hclLogo, className: "h-5 w-auto" },
+    { name: "Cognizant", logo: cognizantLogo, className: "h-6 w-auto" },
+    { name: "Zoho", logo: zohoLogo, className: "h-5 w-auto" },
+    { name: "Hexaware", logo: hexawareLogo, className: "h-6 w-auto" },
+    { name: "Capgemini", logo: capgeminiLogo, className: "h-7 w-auto" },
+    { name: "Accenture", logo: accentureLogo, className: "h-5 w-auto" },
+    { name: "LTI Mindtree", logo: ltimindtreeLogo, className: "h-7 w-auto" }
   ];
 
   const marqueePartners = [...partners, ...partners, ...partners];
@@ -106,37 +118,33 @@ export const PlacementPage: React.FC = () => {
           {/* Global Hiring Partners Marquee */}
           <div className="space-y-4 pt-4">
             <h3 className="text-sm font-bold text-neutral-800 px-1 text-center sm:text-left">Global Hiring Partners</h3>
-            <div className="w-full overflow-hidden py-5 border-y border-border bg-white rounded-2xl relative shadow-inner-soft">
+            <div className="w-full overflow-hidden py-6 border-y border-border bg-white rounded-2xl relative shadow-inner-soft">
               {/* Fades */}
-              <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-              <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
               
               <motion.div
-                className="flex gap-16 items-center w-max px-4"
-                animate={{ x: [0, -1200] }}
+                className="flex gap-20 items-center w-max px-4"
+                animate={{ x: [0, -1400] }}
                 transition={{
                   x: {
                     repeat: Infinity,
                     repeatType: "loop",
-                    duration: 30,
+                    duration: 32,
                     ease: "linear",
                   },
                 }}
               >
                 {marqueePartners.map((partner, idx) => (
-                  <div key={idx} className="flex items-center justify-center shrink-0">
-                    <span className={cn("text-xs sm:text-sm select-none", partner.style)}>
-                      {partner.name === "Zoho" ? (
-                        <span className="flex items-center gap-0.5">
-                          <span className="text-red-500">Z</span>
-                          <span className="text-blue-500">o</span>
-                          <span className="text-yellow-500">h</span>
-                          <span className="text-green-500">o</span>
-                        </span>
-                      ) : partner.name === "Accenture" ? (
-                        <span>accenture <span className="text-violet-600 font-extrabold">&gt;</span></span>
-                      ) : partner.name}
-                    </span>
+                  <div key={idx} className="flex items-center justify-center shrink-0 w-28 h-10">
+                    <img 
+                      src={partner.logo} 
+                      alt={`${partner.name} Logo`} 
+                      className={cn(
+                        "max-h-full max-w-full object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-100 transition-all duration-300", 
+                        partner.className
+                      )} 
+                    />
                   </div>
                 ))}
               </motion.div>
