@@ -73,7 +73,8 @@ export const SkillMasterTable: React.FC<SkillMasterTableProps> = ({ initialSkill
 
         {/* Roster Table Grid */}
         <div className="border border-border rounded-xl overflow-hidden bg-white shadow-premium-sm">
-          <table className="w-full border-collapse text-left text-xs font-semibold text-neutral-700">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-left text-xs font-semibold text-neutral-700">
             <thead className="bg-surface text-neutral-600 border-b border-border">
               <tr>
                 <th className="px-5 py-3 w-10 text-center">#</th>
@@ -104,6 +105,7 @@ export const SkillMasterTable: React.FC<SkillMasterTableProps> = ({ initialSkill
               ))}
             </tbody>
           </table>
+          </div>
         </div>
 
       </CardContent>
