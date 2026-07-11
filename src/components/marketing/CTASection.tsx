@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import heroBgVideo from '@/assets/56209-479197484.mp4';
 
 export const CTASection: React.FC = () => {
+  const [videoSrc, setVideoSrc] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    // Load the heavy video source asynchronously after mount to prevent blocking page load
+    const timer = setTimeout(() => {
+      setVideoSrc(heroBgVideo);
+    }, 150);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="relative rounded-3xl overflow-hidden glass bg-neutral-950/45 border border-white/10 p-8 sm:p-16 text-center text-white shadow-premium-2xl">
+    <div className="relative rounded-3xl overflow-hidden bg-neutral-950/75 backdrop-blur-xl border border-white/10 p-8 sm:p-16 text-center text-white shadow-premium-2xl">
       {/* Background Video */}
-      <video
-        src={heroBgVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover -z-20"
-      />
+      {videoSrc && (
+        <video
+          src={videoSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover -z-20 animate-in fade-in duration-500"
+        />
+      )}
       {/* Dark Overlay for Text Readability */}
       <div className="absolute inset-0 bg-neutral-950/65 -z-10" />
 
