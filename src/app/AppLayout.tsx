@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Github, Linkedin, Twitter, Youtube, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Github, Linkedin, Twitter, Youtube, ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
 import { mockSiteConfig } from '@/mocks/site';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { cn } from '@/lib/utils';
@@ -339,6 +339,23 @@ export const AppLayout: React.FC = () => {
               <p className="text-xs text-text-muted leading-relaxed max-w-sm">
                 Next-generation IT services, high-end technical training, and modern recruitment matching on one unified enterprise platform.
               </p>
+              
+              {/* Contact Details */}
+              <div className="flex flex-col gap-2 mt-1 text-[11px] text-text-muted">
+                <a href="mailto:info@ascope.tech" className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <Mail className="h-3.5 w-3.5 text-neutral-400" />
+                  <span>info@ascope.tech</span>
+                </a>
+                <a href="tel:+18005552726" className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <Phone className="h-3.5 w-3.5 text-neutral-400" />
+                  <span>+1 (800) 555-ASCOPE</span>
+                </a>
+                <div className="flex items-start gap-2">
+                  <MapPin className="h-3.5 w-3.5 text-neutral-400 shrink-0 mt-0.5" />
+                  <span>100 Enterprise Way, Suite 400, Silicon Valley, CA 94025</span>
+                </div>
+              </div>
+
               {/* Social Icons */}
               <div className="flex items-center gap-3.5 mt-2">
                 {mockSiteConfig.socialLinks.map((social) => (
