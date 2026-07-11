@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Github, Linkedin, Twitter, Youtube, ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import { Menu, X, ChevronDown, Github, Linkedin, Twitter, Youtube, ArrowRight, Mail, Phone, MapPin, Instagram, Facebook } from 'lucide-react';
 import { mockSiteConfig } from '@/mocks/site';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { cn } from '@/lib/utils';
 import logoImg from '@/assets/assope tech.png';
-import { LoadingFallback } from '@/components/ui';
 
 export const AppLayout: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -41,13 +40,17 @@ export const AppLayout: React.FC = () => {
   const renderSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {
       case 'github':
-        return <Github className="h-5 w-5" />;
+        return <Github className="h-4 w-4" />;
       case 'linkedin':
-        return <Linkedin className="h-5 w-5" />;
+        return <Linkedin className="h-4 w-4" />;
       case 'twitter':
-        return <Twitter className="h-5 w-5" />;
+        return <Twitter className="h-4 w-4" />;
       case 'youtube':
-        return <Youtube className="h-5 w-5" />;
+        return <Youtube className="h-4 w-4" />;
+      case 'instagram':
+        return <Instagram className="h-4 w-4" />;
+      case 'facebook':
+        return <Facebook className="h-4 w-4" />;
       default:
         return null;
     }
@@ -107,7 +110,6 @@ export const AppLayout: React.FC = () => {
                 <div 
                   key={item.label} 
                   className="relative group py-1"
-                  onMouseEnter={() => setDesktopDropdownOpen(item.label)}
                   onMouseLeave={() => setDesktopDropdownOpen(null)}
                 >
                   {hasChildren ? (
@@ -125,35 +127,30 @@ export const AppLayout: React.FC = () => {
                         <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180", desktopDropdownOpen === item.label && "rotate-180")} />
                       </button>
 
-                      {/* Dropdown Menu with Smooth Transition */}
-                      <AnimatePresence>
-                        {desktopDropdownOpen === item.label && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 8 }}
-                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-60 rounded-xl bg-white border border-border p-2 shadow-premium-lg z-50"
+                      {/* Dropdown Menu */}
+                      <div className={cn(
+                        "absolute top-full left-1/2 -translate-x-1/2 mt-2 w-60 rounded-xl bg-white border border-border p-2 shadow-premium-lg z-50 transition-all duration-200",
+                        desktopDropdownOpen === item.label
+                          ? "opacity-100 translate-y-0 pointer-events-auto visible"
+                          : "opacity-0 translate-y-2 pointer-events-none invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-hover:visible focus-within:opacity-100 focus-within:translate-y-0 focus-within:pointer-events-auto focus-within:visible"
+                      )}>
+                        {item.children?.map((subItem) => (
+                          <NavLink
+                            key={subItem.label}
+                            to={subItem.href}
+                            onClick={() => setDesktopDropdownOpen(null)}
+                            className={({ isActive }) =>
+                              cn(
+                                "group/item flex items-center gap-2 text-xs font-semibold py-2 px-3 rounded-lg hover:bg-surface hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none",
+                                isActive ? "bg-primary-50 text-primary" : "text-neutral-600"
+                              )
+                            }
                           >
-                            {item.children?.map((subItem) => (
-                              <NavLink
-                                key={subItem.label}
-                                to={subItem.href}
-                                onClick={() => setDesktopDropdownOpen(null)}
-                                className={({ isActive }) =>
-                                  cn(
-                                    "group/item flex items-center gap-2 text-xs font-semibold py-2 px-3 rounded-lg hover:bg-surface hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none",
-                                    isActive ? "bg-primary-50 text-primary" : "text-neutral-600"
-                                  )
-                                }
-                              >
-                                <span className="flex-1 min-w-0 truncate">{subItem.label}</span>
-                                <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150" />
-                              </NavLink>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                            <span className="flex-1 min-w-0 truncate">{subItem.label}</span>
+                            <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150" />
+                          </NavLink>
+                        ))}
+                      </div>
                     </>
                   ) : (
                     <NavLink
@@ -319,52 +316,122 @@ export const AppLayout: React.FC = () => {
             variants={pageVariants}
             className="w-full h-full"
           >
-            <React.Suspense fallback={<LoadingFallback />}>
-              <Outlet />
-            </React.Suspense>
+            <Outlet />
           </motion.div>
         </AnimatePresence>
       </main>
 
       {/* Persistent Footer */}
-      <footer className="bg-surface border-t border-border mt-auto pt-16 pb-8" role="contentinfo">
-        <div className="app-container">
-          {/* Main Footer Content */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
-            {/* Brand Column */}
-            <div className="col-span-2 lg:col-span-1 flex flex-col gap-4">
+      <footer className="bg-neutral-950 border-t border-white/5 mt-auto relative overflow-hidden isolate" role="contentinfo">
+        {/* Background Glow Orbs */}
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/4 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-0 left-1/4 w-[400px] h-[300px] bg-blue-600/3 rounded-full blur-3xl pointer-events-none -z-10" />
+
+        {/* Top Call-to-Action Strip */}
+        <div className="border-b border-white/5 py-8">
+          <div className="app-container flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <p className="text-white font-semibold text-sm">IT Training Center — Trichy</p>
+              <p className="text-neutral-400 text-xs mt-0.5">Enroll in our industry-leading programs. Placements guaranteed.</p>
+            </div>
+            <Link
+              to="/contact"
+              className="flex items-center gap-2 text-xs font-semibold px-5 py-2.5 rounded-xl bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 hover:border-primary/50 transition-all shrink-0"
+            >
+              Get in Touch <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Main Footer Content */}
+        <div className="app-container pt-14 pb-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-14">
+
+            {/* Brand + Contact Column */}
+            <div className="col-span-12 lg:col-span-5 flex flex-col gap-6">
               <Link to="/" className="flex items-center rounded-md focus-visible:ring-2 focus-visible:ring-primary w-fit">
-                <img src={logoImg} alt="Ascope Tech" className="h-20 w-auto rounded-lg object-contain" />
+                <img src={logoImg} alt="Ascope Tech" className="h-14 w-auto rounded-xl object-contain bg-white/5 p-1.5 border border-white/10" />
               </Link>
-              <p className="text-xs text-text-muted leading-relaxed max-w-sm">
-                Next-generation IT services, high-end technical training, and modern recruitment matching on one unified enterprise platform.
+
+              <p className="text-xs text-neutral-400 leading-relaxed max-w-xs">
+                Next-generation IT services, professional technical training, and modern talent recruitment — on one unified enterprise platform.
               </p>
-              
-              {/* Contact Details */}
-              <div className="flex flex-col gap-2 mt-1 text-[11px] text-text-muted">
-                <a href="mailto:ascopetech@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <Mail className="h-3.5 w-3.5 text-neutral-400" />
-                  <span>ascopetech@gmail.com</span>
+
+              {/* Contact Detail Cards */}
+              <div className="grid grid-cols-1 gap-3">
+                <a href="mailto:ascopetech@gmail.com"
+                  className="flex items-center gap-3.5 p-3 rounded-xl border border-white/6 bg-white/[0.03] hover:border-primary/30 hover:bg-primary/5 transition-all group">
+                  <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 shrink-0">
+                    <Mail className="h-3.5 w-3.5 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[10px] text-neutral-500 uppercase tracking-widest">Email</p>
+                    <p className="text-xs text-neutral-300 group-hover:text-white transition-colors">ascopetech@gmail.com</p>
+                  </div>
                 </a>
-                <a href="tel:+917418240526" className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <Phone className="h-3.5 w-3.5 text-neutral-400" />
-                  <span>+91 74182 40526</span>
+
+                <a href="tel:+917418240526"
+                  className="flex items-center gap-3.5 p-3 rounded-xl border border-white/6 bg-white/[0.03] hover:border-primary/30 hover:bg-primary/5 transition-all group">
+                  <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 shrink-0">
+                    <Phone className="h-3.5 w-3.5 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[10px] text-neutral-500 uppercase tracking-widest">Helpline</p>
+                    <p className="text-xs text-neutral-300 group-hover:text-white transition-colors">+91 74182 40526</p>
+                  </div>
                 </a>
-                <div className="flex items-start gap-2">
-                  <MapPin className="h-3.5 w-3.5 text-neutral-400 shrink-0 mt-0.5" />
-                  <span>Ascope Tech, 5th floor, SBRR Square, Anna Nagar, Trichy – 620017</span>
+
+                <div className="flex items-start gap-3.5 p-3 rounded-xl border border-white/6 bg-white/[0.03]">
+                  <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 shrink-0 mt-0.5">
+                    <MapPin className="h-3.5 w-3.5 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[10px] text-neutral-500 uppercase tracking-widest">Office</p>
+                    <p className="text-xs text-neutral-300 leading-relaxed">5th floor, SBRR Square, Anna Nagar<br/>Trichy – 620017, Tamil Nadu</p>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* Social Icons */}
-              <div className="flex items-center gap-3.5 mt-2">
+            {/* Link Sections */}
+            <div className="col-span-12 lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-8">
+              {mockSiteConfig.footerSections.map((section) => (
+                <div key={section.title} className="flex flex-col gap-4">
+                  <h3 className="text-[10px] font-bold text-white tracking-[0.15em] uppercase pb-1 border-b border-white/8">
+                    {section.title}
+                  </h3>
+                  <ul className="flex flex-col gap-2.5">
+                    {section.links.map((link) => (
+                      <li key={link.label}>
+                        <Link
+                          to={link.href}
+                          className="text-xs text-neutral-500 hover:text-neutral-100 transition-all hover:translate-x-0.5 inline-flex items-center gap-1 group"
+                        >
+                          <span className="w-0 overflow-hidden group-hover:w-2 transition-all opacity-0 group-hover:opacity-100 text-primary">›</span>
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Social Strip + Bottom Bar */}
+          <div className="border-t border-white/5 pt-8 space-y-6">
+            {/* Social Media Row */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-[11px] text-neutral-500 tracking-wider uppercase">Follow Us</p>
+              <div className="flex items-center gap-2.5">
                 {mockSiteConfig.socialLinks.map((social) => (
                   <a
                     key={social.platform}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-1.5 rounded-lg border border-neutral-200 text-neutral-500 hover:text-primary hover:border-primary/30 hover:bg-primary-50/20 transition-all focus-visible:ring-2 focus-visible:ring-primary"
+                    title={social.platform}
+                    className="p-2.5 rounded-xl border border-white/8 bg-white/[0.03] text-neutral-500 hover:text-white hover:border-primary/40 hover:bg-primary/10 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/10"
                     aria-label={`Follow Ascope Tech on ${social.platform}`}
                   >
                     {renderSocialIcon(social.platform)}
@@ -373,43 +440,14 @@ export const AppLayout: React.FC = () => {
               </div>
             </div>
 
-            {/* Link Sections */}
-            {mockSiteConfig.footerSections.map((section) => (
-              <div key={section.title} className="flex flex-col gap-4">
-                <h3 className="text-xs font-bold text-neutral-800 tracking-wider uppercase">
-                  {section.title}
-                </h3>
-                <ul className="flex flex-col gap-2.5">
-                  {section.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        to={link.href}
-                        className="text-xs text-text-muted hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+            {/* Copyright + Legal Links */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-neutral-600">
+              <p>&copy; {new Date().getFullYear()} Ascope Tech Enterprise Inc. All rights reserved.</p>
+              <div className="flex items-center gap-5">
+                <Link to="/privacy" className="hover:text-neutral-300 transition-colors">Privacy Policy</Link>
+                <Link to="/terms" className="hover:text-neutral-300 transition-colors">Terms of Service</Link>
+                <Link to="/sitemap" className="hover:text-neutral-300 transition-colors">Sitemap</Link>
               </div>
-            ))}
-          </div>
-
-          {/* Bottom Bar */}
-          <div className="border-t border-neutral-200/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-text-light">
-              &copy; {new Date().getFullYear()} Ascope Tech Enterprise Inc. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6">
-              <Link to="/privacy" className="text-xs text-text-light hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary">
-                Privacy
-              </Link>
-              <Link to="/terms" className="text-xs text-text-light hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary">
-                Terms
-              </Link>
-              <Link to="/sitemap" className="text-xs text-text-light hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary">
-                Sitemap
-              </Link>
             </div>
           </div>
         </div>

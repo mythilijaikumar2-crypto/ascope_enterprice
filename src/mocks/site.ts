@@ -107,9 +107,11 @@ export const mockSiteConfig: SiteConfig = {
     }
   ],
   socialLinks: [
-    { platform: "GitHub", href: "https://github.com", icon: "github" },
     { platform: "LinkedIn", href: "https://www.linkedin.com/company/ascope-tech-private-limited/", icon: "linkedin" },
+    { platform: "Instagram", href: "https://www.instagram.com/ascope_tech/", icon: "instagram" },
+    { platform: "Facebook", href: "https://www.facebook.com/ascopetech", icon: "facebook" },
+    { platform: "YouTube", href: "https://youtube.com", icon: "youtube" },
     { platform: "Twitter", href: "https://twitter.com", icon: "twitter" },
-    { platform: "YouTube", href: "https://youtube.com", icon: "youtube" }
+    { platform: "GitHub", href: "https://github.com", icon: "github" }
   ]
 };
