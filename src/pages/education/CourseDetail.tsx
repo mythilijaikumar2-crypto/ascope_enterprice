@@ -223,8 +223,21 @@ export const CourseDetailPage: React.FC = () => {
             <div className="space-y-6">
               <Card variant="premium">
                 <CardHeader>
-                  <span className="text-[10px] font-bold text-primary uppercase tracking-wider">Tuition Fees</span>
-                  <CardTitle className="text-3xl font-display font-extrabold text-neutral-900">${course.price}</CardTitle>
+                  <CardTitle className="text-3xl font-display font-extrabold text-neutral-900">
+                    <div className="flex flex-col gap-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-red-500 font-bold px-2 py-0.5 rounded bg-red-50 border border-red-100">
+                          20% OFF
+                        </span>
+                        <span className="text-sm text-neutral-400 line-through font-normal">
+                          ₹{course.originalPrice ? course.originalPrice.toLocaleString('en-IN') : (course.price * 1.2).toLocaleString('en-IN')}
+                        </span>
+                      </div>
+                      <span className="text-primary">
+                        ₹{course.price.toLocaleString('en-IN')}
+                      </span>
+                    </div>
+                  </CardTitle>
                   <CardDescription>All study resources, workspace certificates, and placement accesses included.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">

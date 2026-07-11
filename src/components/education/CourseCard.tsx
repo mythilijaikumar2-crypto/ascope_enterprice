@@ -55,8 +55,18 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             <span className="text-text-light">({course.enrolledCount} enrolled)</span>
           </div>
           {/* Price */}
-          <div className="font-display font-extrabold text-neutral-900 text-base">
-            ${course.price}
+          <div className="flex flex-col items-end">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[9px] text-red-500 font-bold px-1.5 py-0.2 rounded bg-red-50 border border-red-100">
+                20% OFF
+              </span>
+              <span className="text-[10px] text-neutral-400 line-through">
+                ₹{course.originalPrice ? course.originalPrice.toLocaleString('en-IN') : (course.price * 1.2).toLocaleString('en-IN')}
+              </span>
+            </div>
+            <div className="font-display font-extrabold text-primary text-sm mt-0.5">
+              ₹{course.price.toLocaleString('en-IN')}
+            </div>
           </div>
         </CardContent>
       </div>

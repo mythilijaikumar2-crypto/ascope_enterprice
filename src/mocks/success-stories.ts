@@ -4,7 +4,7 @@ export interface SuccessStory {
   courseTitle: string;
   placedCompany: string;
   placedRole: string;
-  salaryIncrease: string; // e.g. "120% Increase"
+  salaryIncrease: string; // e.g. "₹6.5 LPA"
   quote: string;
   avatar: string;
   year: number;
@@ -13,36 +13,59 @@ export interface SuccessStory {
 export const mockSuccessStories: SuccessStory[] = [
   {
     id: "story-1",
-    studentName: "Jagadeeshwaran Pillai",
-    courseTitle: "React 19 & Next.js Enterprise Bootcamp",
-    placedCompany: "Helius Technologies",
-    placedRole: "Junior Frontend Developer",
-    salaryIncrease: "+85% Salary",
-    quote: "Ascope Academy changed my life. I went from a retail job to writing enterprise React systems. The placement matching was incredibly fast — within 3 weeks of graduating, I signed my offer.",
-    avatar: "JP",
+    studentName: "Arun Prakash",
+    courseTitle: "Java Full Stack Development",
+    placedCompany: "TCS",
+    placedRole: "Full Stack Architect",
+    salaryIncrease: "₹6.5 LPA",
+    quote: "Ascope Tech's Java Full Stack training changed my trajectory completely. Building microservices and dynamic React web pages in class gave me the experience to clear interviews at TCS.",
+    avatar: "AP",
     year: 2025
   },
   {
     id: "story-2",
-    studentName: "Ananya Krishnaswamy",
-    courseTitle: "Cloud-Native Infrastructure with AWS & Terraform",
-    placedCompany: "Apex Security Inc.",
-    placedRole: "DevOps Engineer",
-    salaryIncrease: "+110% Salary",
-    quote: "The Terraform lab requirements were strict, but they matched exactly what my interviewer asked. Now, I deploy VPC networks and pods configurations daily. The curriculum is top tier.",
-    avatar: "AK",
+    studentName: "Priya Nair",
+    courseTitle: "Python and Data Science",
+    placedCompany: "Cognizant",
+    placedRole: "Data Analyst",
+    salaryIncrease: "₹8.2 LPA",
+    quote: "Working with real databases and structuring Pandas tables was highly practical. I transitioned from general sales to a data analyst role at Cognizant within months.",
+    avatar: "PN",
     year: 2025
   },
   {
     id: "story-3",
-    studentName: "Yuvaraj Thangavel",
-    courseTitle: "LLM Fine-Tuning & Prompt Engineering",
-    placedCompany: "Centaurus AI Systems",
-    placedRole: "AI Specialist",
-    salaryIncrease: "+150% Salary",
-    quote: "Fine-tuning weights and structuring LangChain embeddings are rare skills. Ascope Academy taught me how to deploy model runs on production nodes, which directly led to my new lead role.",
-    avatar: "YT",
+    studentName: "Karthik Sundar",
+    courseTitle: "Java Full Stack Development",
+    placedCompany: "Wipro",
+    placedRole: "Java Developer",
+    salaryIncrease: "₹4.8 LPA",
+    quote: "The Java OOPs structures and Spring REST APIs were taught from the ground up. I felt fully prepared for technical evaluations and got selected at Wipro.",
+    avatar: "KS",
+    year: 2025
+  },
+  {
+    id: "story-4",
+    studentName: "Dinesh Raj",
+    courseTitle: "UI/UX Design",
+    placedCompany: "Freshworks",
+    placedRole: "UI/UX Designer",
+    salaryIncrease: "₹7.2 LPA",
+    quote: "Designing high-fidelity Figma layouts, handling Auto-Layout component variants, and studying user-behavior laws is what I do daily now at Freshworks. Outstanding course!",
+    avatar: "DR",
+    year: 2026
+  },
+  {
+    id: "story-5",
+    studentName: "Saranya Kumar",
+    courseTitle: "Data Science and Machine Learning",
+    placedCompany: "Zoho",
+    placedRole: "ML Engineer",
+    salaryIncrease: "₹8.2 LPA",
+    quote: "Configuring predictive regression algorithms, Random Forest ensembles, and deployment loops was highly detailed. Ascope Tech is the best partner for advanced engineering bootcamps.",
+    avatar: "SK",
     year: 2026
   }
 ];
+
 export default mockSuccessStories;
