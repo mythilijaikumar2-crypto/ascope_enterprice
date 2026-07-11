@@ -1,0 +1,88 @@
+@theme {
+  /* Typography Fonts */
+  --font-display: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Color Palette - Premium Primary Indigo/Violet */
+  --color-primary-50: #f5f3ff;
+  --color-primary-100: #ede9fe;
+  --color-primary-200: #ddd6fe;
+  --color-primary-300: #c4b5fd;
+  --color-primary-400: #a78bfa;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #7c3aed;
+  --color-primary-700: #6d28d9;
+  --color-primary-800: #5b21b6;
+  --color-primary-900: #4c1d95;
+  --color-primary-950: #2e1065;
+
+  /* Neutral Slate Palette */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  --color-neutral-950: #020617;
+
+  /* Semantic Colors */
+  --color-primary: var(--color-primary-600);
+  --color-primary-hover: var(--color-primary-700);
+  --color-secondary: var(--color-neutral-600);
+  --color-secondary-hover: var(--color-neutral-700);
+  
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #06b6d4;
+
+  /* Semantic Layout Aliases */
+  --color-background: #ffffff;
+  --color-surface: var(--color-neutral-50);
+  --color-surface-hover: var(--color-neutral-100);
+  --color-border: var(--color-neutral-200);
+  --color-input: var(--color-neutral-100);
+  --color-ring: rgba(124, 58, 237, 0.4);
+  
+  --color-text-main: var(--color-neutral-900);
+  --color-text-muted: var(--color-neutral-500);
+  --color-text-light: var(--color-neutral-400);
+
+  /* Radius Scale */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows Scale (Premium/Cinematic) */
+  --shadow-premium-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-premium-md: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-premium-lg: 0 20px 50px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
+  --shadow-premium-xl: 0 30px 70px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.04);
+  --shadow-inner-soft: inset 0 2px 4px 0 rgba(0, 0, 0, 0.03);
+
+  /* Z-Index Scale */
+  --z-header: 50;
+  --z-sidebar: 40;
+  --z-overlay: 100;
+  --z-modal: 110;
+  --z-toast: 120;
+
+  /* Shimmer Keyframe Animation */
+  --animate-shimmer: shimmer 2s infinite;
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
