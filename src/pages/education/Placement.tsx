@@ -120,8 +120,8 @@ export const PlacementPage: React.FC = () => {
             <h3 className="text-sm font-bold text-neutral-800 px-1 text-center sm:text-left">Global Hiring Partners</h3>
             <div className="w-full overflow-hidden py-6 border-y border-border bg-white rounded-2xl relative shadow-inner-soft">
               {/* Fades */}
-              <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-              <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-y-0 left-0 w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
               
               <motion.div
                 className="flex gap-20 items-center w-max px-4"

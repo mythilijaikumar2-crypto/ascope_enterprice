@@ -44,7 +44,7 @@ export const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
         {/* Banner Section with Floating Icons */}
         <div className={cn("h-24 w-full relative overflow-hidden flex items-center justify-between px-6 isolate", trainer.bgClass)}>
           {/* Floating background shapes / overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent -z-10" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/20 to-transparent -z-10" />
           
           {/* Render 4 floating icons absolute positioned */}
           {trainer.floatingIcons.map((icon, idx) => {
@@ -81,7 +81,7 @@ export const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
           <div className="flex items-end gap-3.5">
             {/* Central Rotating Avatar */}
             <div className={cn(
-              "w-16 h-16 rounded-full border-4 border-white shadow-premium-md flex items-center justify-center transition-transform duration-700 group-hover:rotate-[360deg] shrink-0",
+              "w-16 h-16 rounded-full border-4 border-white shadow-premium-md flex items-center justify-center transition-transform duration-700 group-hover:rotate-360 shrink-0",
               trainer.bgClass
             )}>
               {getAvatarIcon(trainer.avatarIcon)}

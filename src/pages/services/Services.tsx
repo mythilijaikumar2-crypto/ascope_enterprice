@@ -96,7 +96,7 @@ export const ServicesPage: React.FC = () => {
                 >
                   <Card className="flex flex-col justify-between h-full group hover:border-primary/20 transition-all duration-300 relative overflow-hidden bg-white">
                     {/* Top Accent Ribbon */}
-                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary/30 to-info/30 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute top-0 inset-x-0 h-1 bg-linear-to-r from-primary/30 to-info/30 opacity-0 group-hover:opacity-100 transition-opacity" />
 
                     <CardHeader className="space-y-4">
                       <div className="flex items-center justify-between">
