@@ -8,32 +8,26 @@ export interface LeaderProfile {
 
 export const mockLeadership: LeaderProfile[] = [
   {
-    name: "Dr. Karthikeyan Vasudevan",
-    role: "Chief Executive Officer & Founder",
-    avatar: "KV",
-    bio: "Ex-Google Staff Engineer. Holds a PhD in Distributed Systems. Passionate about reforming professional tech bootcamps and building resilient cloud software systems.",
-    linkedin: "https://linkedin.com"
-  },
-  {
-    name: "Aishwarya Srinivasan",
-    role: "Chief Operating Officer",
+    name: "Alex Sterling",
+    role: "CEO & Founder",
     avatar: "AS",
-    bio: "Over 15 years directing enterprise client deliveries. Spearheads Ascope Tech's IT Services division and international agency partnerships.",
-    linkedin: "https://linkedin.com"
+    bio: "Former Principal Architect at Google with 15+ years scaling web infrastructure and leading enterprise product deployments.",
+    linkedin: "https://www.linkedin.com/company/ascope-tech-private-limited/"
   },
   {
-    name: "Devarajan Chandrasekhar",
-    role: "Head of Professional Education",
-    avatar: "DC",
-    bio: "Former Director of Engineering at major EdTech programs. Curated Ascope Academy's curricula, placing over 5,000 candidates globally.",
-    linkedin: "https://linkedin.com"
+    name: "Elena Rostova",
+    role: "Head of Design",
+    avatar: "ER",
+    bio: "Award-winning designer passionate about building sleek, accessible user interfaces and structured corporate design systems.",
+    linkedin: "https://www.linkedin.com/company/ascope-tech-private-limited/"
   },
   {
-    name: "Nandini Balakrishnan",
-    role: "VP of Recruitment & Talent Match",
-    avatar: "NB",
-    bio: "Technical HR veteran. Designed our proprietary AI-assisted matching logic, pairing elite tech applicants with enterprise vacancies.",
-    linkedin: "https://linkedin.com"
+    name: "Marcus Vance",
+    role: "Director of DevOps",
+    avatar: "MV",
+    bio: "Kubernetes core contributor specializing in automated, zero-downtime scaling systems and secure multi-cloud architectures.",
+    linkedin: "https://www.linkedin.com/company/ascope-tech-private-limited/"
   }
 ];
+
 export default mockLeadership;

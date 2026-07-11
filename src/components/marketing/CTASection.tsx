@@ -36,17 +36,17 @@ export const CTASection: React.FC = () => {
 
       <div className="max-w-2xl mx-auto space-y-6 z-10 relative">
         <h2 className="text-3xl sm:text-4xl font-display font-extrabold tracking-tight">
-          Ready to scale your systems or accelerate your career?
+          Ready to engineer your next software solution?
         </h2>
-        <p className="text-sm text-primary-100/80 leading-relaxed max-w-lg mx-auto">
-          Join hundreds of companies partnering with Ascope Tech, or kickstart your technical skills within our intensive bootcamps.
+        <p className="text-sm text-primary-100/80 leading-relaxed max-w-xl mx-auto">
+          We align senior developers, rigorous design frameworks, and agile management to scale your operations.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
           <Link
-            to="/careers/register"
+            to="/contact-sales"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-premium-md hover:scale-[1.01] transition-all"
           >
-            Create Candidate Account
+            Start a Project
             <ArrowRight className="h-4 w-4" />
           </Link>
           <Link

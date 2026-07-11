@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Cloud, BrainCircuit, CheckCircle2 } from 'lucide-react';
+import { Cpu, Cloud, BrainCircuit, CheckCircle2, Globe, Smartphone, Palette } from 'lucide-react';
 import type { ServiceItem } from '@/mocks/services';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
@@ -17,6 +17,12 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         return <Cloud className="h-6 w-6 text-info" />;
       case 'BrainCircuit':
         return <BrainCircuit className="h-6 w-6 text-success" />;
+      case 'Globe':
+        return <Globe className="h-6 w-6 text-indigo-500" />;
+      case 'Smartphone':
+        return <Smartphone className="h-6 w-6 text-pink-500" />;
+      case 'Palette':
+        return <Palette className="h-6 w-6 text-purple-500" />;
       default:
         return <Cpu className="h-6 w-6 text-primary" />;
     }

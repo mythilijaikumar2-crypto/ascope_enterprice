@@ -649,6 +649,22 @@ export const HomePage: React.FC = () => {
       {/* 1. Hero Block */}
       <Hero />
 
+      {/* Trust Marquee / Logos */}
+      <div className="w-full overflow-hidden py-8 border-y border-neutral-100 bg-neutral-50/30 -mt-8 relative">
+        <div className="app-container max-w-5xl space-y-4 text-center">
+          <p className="text-[9px] font-bold text-neutral-400 uppercase tracking-widest leading-none">
+            ENGINEERING BACKGROUNDS FROM LEADING ORGANIZATIONS
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4 pt-1">
+            {["Google", "Microsoft", "AWS", "Stripe", "Airbnb", "HubSpot", "Shopify"].map((brand) => (
+              <span key={brand} className="text-xs sm:text-sm font-display font-extrabold text-neutral-400 select-none tracking-tight">
+                {brand}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* 2. Value Props Grid */}
       <motion.section 
         id="value-props-section" 
