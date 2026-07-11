@@ -13,3 +13,5 @@ export * from './empty-state';
 export * from './toast';
 export * from './data-table';
 export * from './chart';
+export * from './LoadingFallback';
+

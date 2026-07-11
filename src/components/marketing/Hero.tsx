@@ -80,6 +80,15 @@ const TypingHeading: React.FC<TypingHeadingProps> = ({ text1, text2, prefersRedu
 
 export const Hero: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
+  const [videoSrc, setVideoSrc] = React.useState<string | undefined>(undefined);
+
+  React.useEffect(() => {
+    // Load the heavy 8.3MB video source asynchronously after mount to prevent blocking page load
+    const timer = setTimeout(() => {
+      setVideoSrc(heroBgVideo);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const containerVariants = {
     hidden: {},
@@ -106,14 +115,16 @@ export const Hero: React.FC = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 -mt-24 bg-transparent isolate">
       {/* Background Video */}
-      <video
-        src={heroBgVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover -z-20"
-      />
+      {videoSrc && (
+        <video
+          src={videoSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover -z-20 animate-in fade-in duration-500"
+        />
+      )}
       {/* Dark overlay to make text more readable */}
       <div className="absolute inset-0 bg-black/55 -z-10" />
       

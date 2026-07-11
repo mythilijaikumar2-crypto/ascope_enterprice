@@ -3,77 +3,79 @@ import { Link, Navigate } from 'react-router-dom';
 import { AlertTriangle, ArrowRight } from 'lucide-react';
 import SEOHead from './SEOHead';
 
-// Import finalized pages
+// Keep HomePage static so it loads instantly
 import HomePage from '@/pages/marketing/Home';
-import CompanyPage from '@/pages/marketing/Company';
-import AboutPage from '@/pages/marketing/About';
-import VisionMissionPage from '@/pages/marketing/VisionMission';
-import LeadershipPage from '@/pages/marketing/Leadership';
-import ContactPage from '@/pages/marketing/Contact';
-import PrivacyPage from '@/pages/marketing/Privacy';
-import TermsPage from '@/pages/marketing/Terms';
-import SitemapPage from '@/pages/marketing/Sitemap';
-import { DesignSystemPage } from '@/pages/DesignSystem';
+
+// Lazy load marketing pages
+const CompanyPage = React.lazy(() => import('@/pages/marketing/Company'));
+const AboutPage = React.lazy(() => import('@/pages/marketing/About'));
+const VisionMissionPage = React.lazy(() => import('@/pages/marketing/VisionMission'));
+const LeadershipPage = React.lazy(() => import('@/pages/marketing/Leadership'));
+const ContactPage = React.lazy(() => import('@/pages/marketing/Contact'));
+const PrivacyPage = React.lazy(() => import('@/pages/marketing/Privacy'));
+const TermsPage = React.lazy(() => import('@/pages/marketing/Terms'));
+const SitemapPage = React.lazy(() => import('@/pages/marketing/Sitemap'));
+const DesignSystemPage = React.lazy(() => import('@/pages/DesignSystem'));
 
 // Academy pages
-import CoursesPage from '@/pages/education/Courses';
-import CategoryDetailPage from '@/pages/education/CategoryDetail';
-import CourseDetailPage from '@/pages/education/CourseDetail';
-import TrainersPage from '@/pages/education/Trainers';
-import CertificationsPage from '@/pages/education/Certifications';
-import StudentSuccessPage from '@/pages/education/StudentSuccess';
-import PlacementPage from '@/pages/education/Placement';
+const CoursesPage = React.lazy(() => import('@/pages/education/Courses'));
+const CategoryDetailPage = React.lazy(() => import('@/pages/education/CategoryDetail'));
+const CourseDetailPage = React.lazy(() => import('@/pages/education/CourseDetail'));
+const TrainersPage = React.lazy(() => import('@/pages/education/Trainers'));
+const CertificationsPage = React.lazy(() => import('@/pages/education/Certifications'));
+const StudentSuccessPage = React.lazy(() => import('@/pages/education/StudentSuccess'));
+const PlacementPage = React.lazy(() => import('@/pages/education/Placement'));
 
 // Services consulting pages
-import ServicesPage from '@/pages/services/Services';
-import SolutionsPage from '@/pages/services/Solutions';
-import TechnologiesPage from '@/pages/services/Technologies';
-import PortfolioPage from '@/pages/services/Portfolio';
-import IndustriesPage from '@/pages/services/Industries';
-import CaseStudyDetailPage from '@/pages/services/CaseStudyDetail';
-import ContactSalesPage from '@/pages/services/ContactSales';
+const ServicesPage = React.lazy(() => import('@/pages/services/Services'));
+const SolutionsPage = React.lazy(() => import('@/pages/services/Solutions'));
+const TechnologiesPage = React.lazy(() => import('@/pages/services/Technologies'));
+const PortfolioPage = React.lazy(() => import('@/pages/services/Portfolio'));
+const IndustriesPage = React.lazy(() => import('@/pages/services/Industries'));
+const CaseStudyDetailPage = React.lazy(() => import('@/pages/services/CaseStudyDetail'));
+const ContactSalesPage = React.lazy(() => import('@/pages/services/ContactSales'));
 
 // Careers pages
-import JobsPage from '@/pages/careers/Jobs';
-import JobDetailPage from '@/pages/careers/JobDetail';
-import InternshipsPage from '@/pages/careers/Internships';
-import CampusHiringPage from '@/pages/careers/CampusHiring';
-import RegisterPage from '@/pages/careers/Register';
+const JobsPage = React.lazy(() => import('@/pages/careers/Jobs'));
+const JobDetailPage = React.lazy(() => import('@/pages/careers/JobDetail'));
+const InternshipsPage = React.lazy(() => import('@/pages/careers/Internships'));
+const CampusHiringPage = React.lazy(() => import('@/pages/careers/CampusHiring'));
+const RegisterPage = React.lazy(() => import('@/pages/careers/Register'));
 
 // Candidate Portal pages
-import DashboardPage from '@/pages/portal/Dashboard';
-import ProfilePage from '@/pages/portal/Profile';
-import ResumePage from '@/pages/portal/Resume';
-import SkillsPage from '@/pages/portal/Skills';
-import ApplicationsPage from '@/pages/portal/Applications';
+const DashboardPage = React.lazy(() => import('@/pages/portal/Dashboard'));
+const ProfilePage = React.lazy(() => import('@/pages/portal/Profile'));
+const ResumePage = React.lazy(() => import('@/pages/portal/Resume'));
+const SkillsPage = React.lazy(() => import('@/pages/portal/Skills'));
+const ApplicationsPage = React.lazy(() => import('@/pages/portal/Applications'));
 
 // HR and Recruiter pages
-import HRDashboardPage from '@/pages/hr/Dashboard';
-import RecruiterDashboardPage from '@/pages/hr/RecruiterDashboard';
-import HRJobsPage from '@/pages/hr/Jobs';
-import CandidatesPage from '@/pages/hr/Candidates';
-import CandidateDetailPage from '@/pages/hr/CandidateDetail';
-import InterviewsPage from '@/pages/hr/Interviews';
+const HRDashboardPage = React.lazy(() => import('@/pages/hr/Dashboard'));
+const RecruiterDashboardPage = React.lazy(() => import('@/pages/hr/RecruiterDashboard'));
+const HRJobsPage = React.lazy(() => import('@/pages/hr/Jobs'));
+const CandidatesPage = React.lazy(() => import('@/pages/hr/Candidates'));
+const CandidateDetailPage = React.lazy(() => import('@/pages/hr/CandidateDetail'));
+const InterviewsPage = React.lazy(() => import('@/pages/hr/Interviews'));
 
 // HR Admin pages
-import AdminDashboardPage from '@/pages/admin/AdminDashboard';
-import UsersPage from '@/pages/admin/Users';
-import RolesPage from '@/pages/admin/Roles';
-import DepartmentsPage from '@/pages/admin/Departments';
-import AdminSkillsPage from '@/pages/admin/Skills';
-import SettingsPage from '@/pages/admin/Settings';
-import ReportsPage from '@/pages/admin/Reports';
+const AdminDashboardPage = React.lazy(() => import('@/pages/admin/AdminDashboard'));
+const UsersPage = React.lazy(() => import('@/pages/admin/Users'));
+const RolesPage = React.lazy(() => import('@/pages/admin/Roles'));
+const DepartmentsPage = React.lazy(() => import('@/pages/admin/Departments'));
+const AdminSkillsPage = React.lazy(() => import('@/pages/admin/Skills'));
+const SettingsPage = React.lazy(() => import('@/pages/admin/Settings'));
+const ReportsPage = React.lazy(() => import('@/pages/admin/Reports'));
 
 // AI Mock page views
-import ResumeMatchPage from '@/pages/hr/ai/ResumeMatch';
-import CandidateRankingPage from '@/pages/hr/ai/CandidateRanking';
-import SkillAnalysisPage from '@/pages/hr/ai/SkillAnalysis';
+const ResumeMatchPage = React.lazy(() => import('@/pages/hr/ai/ResumeMatch'));
+const CandidateRankingPage = React.lazy(() => import('@/pages/hr/ai/CandidateRanking'));
+const SkillAnalysisPage = React.lazy(() => import('@/pages/hr/ai/SkillAnalysis'));
 
 // Analytics pages
-import OverviewPage from '@/pages/analytics/Overview';
-import HiringPage from '@/pages/analytics/Hiring';
-import EducationPage from '@/pages/analytics/Education';
-import AnalyticsServicesPage from '@/pages/analytics/Services';
+const OverviewPage = React.lazy(() => import('@/pages/analytics/Overview'));
+const HiringPage = React.lazy(() => import('@/pages/analytics/Hiring'));
+const EducationPage = React.lazy(() => import('@/pages/analytics/Education'));
+const AnalyticsServicesPage = React.lazy(() => import('@/pages/analytics/Services'));
 
 // Local Not Found (404) Page
 export const NotFoundPage: React.FC = () => {

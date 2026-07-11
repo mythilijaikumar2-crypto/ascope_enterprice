@@ -6,6 +6,7 @@ import { mockSiteConfig } from '@/mocks/site';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { cn } from '@/lib/utils';
 import logoImg from '@/assets/assope tech.png';
+import { LoadingFallback } from '@/components/ui';
 
 export const AppLayout: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -318,7 +319,9 @@ export const AppLayout: React.FC = () => {
             variants={pageVariants}
             className="w-full h-full"
           >
-            <Outlet />
+            <React.Suspense fallback={<LoadingFallback />}>
+              <Outlet />
+            </React.Suspense>
           </motion.div>
         </AnimatePresence>
       </main>
