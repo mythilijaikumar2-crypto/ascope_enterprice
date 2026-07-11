@@ -342,17 +342,17 @@ export const AppLayout: React.FC = () => {
               
               {/* Contact Details */}
               <div className="flex flex-col gap-2 mt-1 text-[11px] text-text-muted">
-                <a href="mailto:info@ascope.tech" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <a href="mailto:ascopetech@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
                   <Mail className="h-3.5 w-3.5 text-neutral-400" />
-                  <span>info@ascope.tech</span>
+                  <span>ascopetech@gmail.com</span>
                 </a>
-                <a href="tel:+18005552726" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <a href="tel:+917418240526" className="flex items-center gap-2 hover:text-primary transition-colors">
                   <Phone className="h-3.5 w-3.5 text-neutral-400" />
-                  <span>+1 (800) 555-ASCOPE</span>
+                  <span>+91 74182 40526</span>
                 </a>
                 <div className="flex items-start gap-2">
                   <MapPin className="h-3.5 w-3.5 text-neutral-400 shrink-0 mt-0.5" />
-                  <span>100 Enterprise Way, Suite 400, Silicon Valley, CA 94025</span>
+                  <span>Ascope Tech, 5th floor, SBRR Square, Anna Nagar, Trichy – 620017</span>
                 </div>
               </div>
 
